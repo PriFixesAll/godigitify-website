@@ -32,7 +32,7 @@ export function HeroSection() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-4xl mx-auto flex flex-col items-center text-center my-auto px-6 relative z-10"
       >
-        {/* Headline with responsive scaling up to 36px desktop font size */}
+        {/* Headline strictly set to 36px font size on desktop */}
         <h1 className="text-3xl sm:text-4xl lg:text-[36px] font-extrabold text-[#1A1A1A] tracking-tight leading-[1.2] mb-6 max-w-2xl">
           Engineering Digital Systems That Drive Growth
         </h1>

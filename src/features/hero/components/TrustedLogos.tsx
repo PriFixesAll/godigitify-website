@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const logos = [
   {
@@ -70,8 +71,8 @@ const logos = [
 ];
 
 export function TrustedLogos() {
-  // Duplicate array for seamless infinite queue animation
-  const queueLogos = [...logos, ...logos];
+  // Duplicate array 4x for a perfectly seamless, infinite queue moving loop
+  const queueLogos = [...logos, ...logos, ...logos, ...logos];
 
   return (
     <div className="w-full max-w-6xl mx-auto mt-16 pt-6 flex flex-col items-center overflow-hidden">
@@ -81,8 +82,17 @@ export function TrustedLogos() {
       </p>
 
       {/* Infinite Queue Moving Container */}
-      <div className="w-full relative overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
-        <div className="animate-marquee-queue flex items-center gap-12 sm:gap-16">
+      <div className="w-full relative overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <motion.div
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{
+            repeat: Infinity,
+            repeatType: 'loop',
+            duration: 28,
+            ease: 'linear',
+          }}
+          className="flex items-center gap-12 sm:gap-16 shrink-0 w-max"
+        >
           {queueLogos.map((logo, index) => (
             <div
               key={`${logo.name}-${index}`}
@@ -91,7 +101,7 @@ export function TrustedLogos() {
               {logo.render()}
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

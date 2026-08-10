@@ -18,13 +18,17 @@
   }
 }
 
-/* Neutral Frosted Glass Navbar (Apple x Linear x Vercel Aesthetic) */
+/* Glassmorphism Navbar with Low Opacity Fill & Gradient Border */
 .glass-header-neutral {
-  background: rgba(255, 255, 255, 0.24);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.38)),
+    linear-gradient(135deg, rgba(124, 58, 237, 0.4), rgba(77, 40, 110, 0.15), rgba(236, 72, 153, 0.35));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border: 1px solid transparent;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 8px 24px -4px rgba(77, 40, 110, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .glass-circle-btn {
@@ -41,13 +45,6 @@
   border-color: rgba(255, 255, 255, 0.95);
   transform: translateY(-1px) scale(1.02);
   box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.08);
-}
-
-.glass-badge-purple {
-  background: rgba(245, 238, 255, 0.85);
-  border: 1px solid rgba(136, 72, 199, 0.3);
-  box-shadow: 0 2px 10px rgba(77, 40, 110, 0.06);
-  color: #4d286e;
 }
 
 /* Atmospheric Fog Overlay */
@@ -91,14 +88,6 @@
   transform: translateY(-1px);
 }
 
-/* Text Gradient Highlights */
-.text-purple-highlight {
-  color: #4d286e;
-  background: linear-gradient(135deg, #4d286e 0%, #6b389c 50%, #8848c7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 /* Infinite Marquee Queue Keyframes */
 @keyframes marqueeQueue {
   0% {
@@ -119,8 +108,60 @@
   animation-play-state: paused;
 }
 
+/* GPU-Accelerated Orbit Revolving & Counter-Rotation Animation Keyframes */
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counterSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.orbit-spin-wrapper {
+  animation: orbitSpin 35s linear infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.counter-spin-card {
+  animation: counterSpin 35s linear infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Pause entire orbit animation on hover over container */
+.orbit-main-container:hover .orbit-spin-wrapper,
+.orbit-main-container:hover .counter-spin-card {
+  animation-play-state: paused;
+}
+
+/* Dot Grid Background Overlay */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(124, 58, 237, 0.15) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+@media (max-width: 767px) {
+  .orbit-spin-wrapper,
+  .counter-spin-card {
+    animation: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee-queue {
-    animation: none;
+  .animate-marquee-queue,
+  .orbit-spin-wrapper,
+  .counter-spin-card {
+    animation: none !important;
   }
 }
