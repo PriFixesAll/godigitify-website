@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Caveat } from 'next/font/google';
 import { siteConfig } from '@/config/site';
 import './globals.css';
 
@@ -11,6 +11,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+});
+
+const caveat = Caveat({
+  variable: '--font-caveat',
+  subsets: ['latin'],
+  weight: ['700'],
 });
 
 export const metadata: Metadata = {
@@ -33,10 +39,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-slate-950 text-slate-100 selection:bg-indigo-500/30" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-[#F8F6F2] text-[#1A1A1A] selection:bg-purple-500/20" suppressHydrationWarning>
         {children}
       </body>
     </html>

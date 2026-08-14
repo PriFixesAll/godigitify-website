@@ -47,7 +47,7 @@ const logos = [
   {
     name: 'IBM',
     render: () => (
-      <div className="text-slate-700 font-extrabold text-xl sm:text-2xl tracking-widest font-mono">
+      <div className="text-slate-700 font-semibold text-xl sm:text-2xl tracking-widest font-mono">
         IBM
       </div>
     ),
