@@ -1,22 +1,35 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Caveat } from 'next/font/google';
+import { Poppins, Plus_Jakarta_Sans, Playfair_Display, Caveat } from 'next/font/google';
 import { siteConfig } from '@/config/site';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const poppins = Poppins({
+  variable: '--font-poppins',
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const ceraSans = Plus_Jakarta_Sans({
+  variable: '--font-cera',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  variable: '--font-playfair',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  style: ['normal', 'italic'],
+  display: 'swap',
 });
 
 const caveat = Caveat({
   variable: '--font-caveat',
   subsets: ['latin'],
   weight: ['700'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -39,10 +52,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} h-full antialiased`}
+      className={`${poppins.variable} ${ceraSans.variable} ${playfair.variable} ${caveat.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#F8F6F2] text-[#1A1A1A] selection:bg-purple-500/20" suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/cera-pro" />
+      </head>
+      <body className="min-h-full flex flex-col bg-[#F8F6F2] text-[#1A1A1A] font-sans selection:bg-purple-500/20" suppressHydrationWarning>
         {children}
       </body>
     </html>

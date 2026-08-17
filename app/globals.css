@@ -7,19 +7,33 @@
     --brand-purple: #4d286e;
     --brand-purple-light: #6b389c;
     --brand-purple-gradient: linear-gradient(135deg, #4d286e 0%, #6b389c 50%, #8848c7 100%);
+    --font-cera-family: 'Cera Pro', 'CeraPro-Bold', 'CeraPro-Medium', var(--font-cera), 'Plus Jakarta Sans', sans-serif;
   }
 
   body {
+    font-family: var(--font-poppins), 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--background);
     color: var(--foreground);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     overflow-x: hidden;
     selection-background-color: rgba(77, 40, 110, 0.2);
   }
+
+  h1, h2, h3, h4, h5, h6, .font-headline, .font-cera {
+    font-family: var(--font-cera-family);
+  }
 }
 
 .font-handwritten {
   font-family: var(--font-caveat), cursive, sans-serif;
+}
+
+.font-cera {
+  font-family: var(--font-cera-family);
+}
+
+.font-editorial {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
 }
 
 /* Glassmorphism Navbar with Low Opacity Fill & Gradient Border */

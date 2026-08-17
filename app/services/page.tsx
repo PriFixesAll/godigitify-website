@@ -15,6 +15,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { CallToActionSection } from '@/features/cta/components/CallToActionSection';
 import { OurServicesReferenceSection } from '@/features/services/components/OurServicesReferenceSection';
+import { ServicesHeroSection } from '@/features/services/components/ServicesHeroSection';
 
 interface ServiceItem {
   id: string;
@@ -108,8 +109,11 @@ export default function ServicesPage() {
     <div className="relative min-h-screen bg-[#FAF9FC] text-[#0F172A] font-sans selection:bg-[#7C3AED]/20 overflow-hidden select-none">
       <Navbar />
 
-      <main className="pt-16 pb-16">
-        {/* OUR SERVICES CLONED SECTION FROM REFERENCE IMAGE */}
+      <main className="pb-16">
+        {/* NEW TOP HERO SECTION CLONED FROM ATTACHED REFERENCE IMAGE */}
+        <ServicesHeroSection />
+
+        {/* OUR SERVICES PILLARS (01 BRAND, 02 MARKETING, 03 PRODUCT) */}
         <OurServicesReferenceSection />
 
         {/* SERVICE FILTER TABS */}

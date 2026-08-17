@@ -4,19 +4,57 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Bot, ChevronDown } from 'lucide-react';
+import {
+  Menu,
+  X,
+  Bot,
+  ChevronDown,
+  Sparkles,
+  Search,
+  BarChart3,
+  Zap,
+  Code2,
+  ArrowRight,
+} from 'lucide-react';
 import { Logo } from '@/components/ui/Logo';
 import { navigationConfig } from '@/config/navigation';
 
-const servicesSubmenu = [
-  { label: 'BRAND', href: '/services/dba/brand-systems' },
-  { label: 'MARKETING', href: '/services#marketing' },
-  { label: 'PRODUCT', href: '/services#product' },
+const richServicesSubmenu = [
+  {
+    title: 'Brand Strategy',
+    description: 'Positioning, identity, messaging, GTM',
+    href: '/services/dba/brand-systems',
+    icon: Sparkles,
+  },
+  {
+    title: 'SEO and Content',
+    description: 'Organic traffic that compounds over time',
+    href: '/services#marketing',
+    icon: Search,
+  },
+  {
+    title: 'Digital Marketing',
+    description: 'Meta, Google, WhatsApp, UGC, Influencer and more',
+    href: '/services#marketing',
+    icon: BarChart3,
+  },
+  {
+    title: 'AI Products and Tech',
+    description: 'Chatbots, MVPs, automation workflows',
+    href: '/services#product',
+    icon: Zap,
+  },
+  {
+    title: 'Tech Consulting',
+    description: 'Fractional CTO, audits, architecture, team building',
+    href: '/services#product',
+    icon: Code2,
+  },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isPastHero, setIsPastHero] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [isServicesOpenMobile, setIsServicesOpenMobile] = useState(false);
   const pathname = usePathname();
@@ -24,13 +62,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroElement = document.getElementById('hero-section');
-      if (heroElement) {
-        const heroRect = heroElement.getBoundingClientRect();
-        setIsPastHero(heroRect.bottom <= 80);
-      } else {
-        setIsPastHero(window.scrollY > 600);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -50,23 +82,27 @@ export function Navbar() {
   };
 
   return (
-    <header
-      className={`fixed top-3.5 inset-x-0 z-50 flex h-12 items-center justify-between px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto transition-all duration-500 ease-in-out ${
-        isPastHero
-          ? '-translate-y-24 opacity-0 pointer-events-none'
-          : 'translate-y-0 opacity-100 pointer-events-none'
-      }`}
-    >
-      {/* 1. Far Left: Logo */}
+    <header className="fixed top-3 sm:top-3.5 inset-x-0 z-50 flex items-center justify-between px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto pointer-events-none">
+      {/* 1. Top-Left Corner: Logo OUTSIDE the floating navbar pill */}
       <div className="pointer-events-auto shrink-0 flex items-center">
         <Logo showTagline={false} />
       </div>
 
-      {/* 2. Center: Sleek Floating Glass Pill (Height 34px, Compact Animated Nav) */}
-      <div className="pointer-events-auto hidden md:flex h-[34px] glass-header-neutral rounded-full px-2.5 sm:px-3 items-center justify-center shadow-sm relative z-40">
+      {/* 2. Center: Compact Floating Glass Pill containing ONLY the navigation buttons */}
+      <div
+        className={`pointer-events-auto hidden md:flex items-center justify-center transition-all duration-300 ease-out rounded-full ${
+          isScrolled
+            ? 'bg-white/65 backdrop-blur-xl border border-white/80 shadow-[0_8px_32px_rgba(15,23,42,0.08)] px-3 py-1'
+            : 'bg-white/45 backdrop-blur-md border border-white/70 shadow-sm px-3 py-1'
+        }`}
+        style={{
+          WebkitBackdropFilter: isScrolled ? 'blur(16px) saturate(180%)' : 'blur(12px)',
+          backdropFilter: isScrolled ? 'blur(16px) saturate(180%)' : 'blur(12px)',
+        }}
+      >
         <nav
           aria-label="Main Navigation"
-          className="flex items-center gap-0.5 sm:gap-1 text-[11.5px] font-medium"
+          className="flex items-center gap-0.5 sm:gap-1 text-[13px] font-semibold"
           onMouseLeave={handleMouseLeave}
         >
           {navigationConfig.mainNav.map((item) => {
@@ -81,65 +117,101 @@ export function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className="relative px-2.5 py-1 rounded-full text-[11.5px] font-medium transition-colors duration-200 z-10 flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
+                  className="relative px-3 py-1 rounded-full text-[13px] font-semibold transition-colors duration-200 z-10 flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
                   style={{
-                    color: isHovered ? '#FFFFFF' : '#1A1A1A',
+                    color: isHovered ? '#7C3AED' : '#0F172A',
                   }}
                 >
                   <span className="relative z-10">{item.label}</span>
+                  {isServices && (
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 relative z-10 transition-transform duration-200 ${
+                        isHovered ? 'rotate-180 text-[#7C3AED]' : 'text-slate-600'
+                      }`}
+                    />
+                  )}
 
-                  {/* SHARED HOVER ACTIVE ANIMATED PILL HIGHLIGHT */}
+                  {/* SIMPLE SLEEK PURPLE UNDERLINE HOVER ANIMATION */}
                   {isHovered && (
                     <motion.div
-                      layoutId="navbar-hover-pill"
-                      className="absolute inset-0 bg-[#4d2a71] rounded-full shadow-[0_4px_14px_rgba(77,42,113,0.35)] z-0"
+                      layoutId="navbar-hover-line"
+                      className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#7C3AED] rounded-full z-10"
                       transition={{
                         type: 'spring',
-                        stiffness: 420,
+                        stiffness: 400,
                         damping: 30,
                       }}
                     />
                   )}
                 </Link>
 
-                {/* SERVICES INDIVIDUAL DROPDOWN PILLS WITH LEFT ALIGNMENT */}
+                {/* SERVICES RICH DROPDOWN PANEL MATCHING REFERENCE IMAGE */}
                 {isServices && (
                   <AnimatePresence>
                     {isHovered && (
                       <motion.div
-                        initial={{ opacity: 0, y: 0 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -4 }}
-                        transition={{ duration: 0.18 }}
-                        className="absolute top-full left-0 pt-2 z-50 pointer-events-auto"
+                        initial={{ opacity: 0, y: 4, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -4, scale: 0.98 }}
+                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 z-50 pointer-events-auto"
                         onMouseEnter={() => handleMouseEnter('Services')}
                         onMouseLeave={handleMouseLeave}
                       >
                         {/* INVISIBLE HOVER BRIDGE PREVENTS GAP DROPOUT */}
                         <div className="absolute -top-3 left-0 right-0 h-4 bg-transparent" />
 
-                        {/* STACK OF LEFT-ALIGNED COMPACT SUBMENU PILL BUTTONS (#4d2a71) WITH INCREASED GAP */}
-                        <div className="flex flex-col items-start gap-2">
-                          {servicesSubmenu.map((subItem, index) => (
-                            <motion.div
-                              key={subItem.label}
-                              initial={{ opacity: 0, y: -8 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -6 }}
-                              transition={{
-                                duration: 0.22,
-                                ease: [0.22, 1, 0.36, 1],
-                                delay: index * 0.05,
-                              }}
-                            >
-                              <Link
-                                href={subItem.href}
-                                className="block px-2.5 py-[3px] rounded-full text-[9.5px] font-medium tracking-wider text-white hover:text-[#0F172A] bg-gradient-to-br from-[#2D1A4A]/85 via-[#22133B]/80 to-[#180C2C]/85 backdrop-blur-md border border-[#7C3AED]/60 hover:bg-none hover:bg-white hover:border-[#7C3AED] hover:shadow-[0_4px_14px_rgba(124,58,237,0.35)] transition-all duration-300 ease-out whitespace-nowrap hover:scale-105 cursor-pointer"
+                        {/* FLOATING WHITE CARD WITH GODIGITIFY PURPLE THEME & COMPACT SIZING */}
+                        <div className="bg-white/95 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 shadow-[0_20px_50px_rgba(15,23,42,0.14)] border border-slate-100/90 w-[280px] sm:w-[315px] flex flex-col gap-0.5 text-left">
+                          {richServicesSubmenu.map((subItem, index) => {
+                            const IconComp = subItem.icon;
+                            return (
+                              <motion.div
+                                key={subItem.title}
+                                initial={{ opacity: 0, x: -6 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{
+                                  duration: 0.2,
+                                  delay: index * 0.03,
+                                }}
                               >
-                                {subItem.label}
-                              </Link>
-                            </motion.div>
-                          ))}
+                                <Link
+                                  href={subItem.href}
+                                  className="group p-1.5 sm:p-2 rounded-xl hover:bg-purple-50/60 transition-colors flex items-start gap-2.5 cursor-pointer text-left w-full block"
+                                >
+                                  {/* GODIGITIFY BRAND PURPLE ICON BOX */}
+                                  <div className="w-8 h-8 rounded-lg bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center shrink-0 border border-[#E9D8F8] group-hover:bg-[#7C3AED] group-hover:text-white group-hover:border-[#7C3AED] transition-all duration-200 mt-0.5">
+                                    <IconComp className="w-4 h-4" />
+                                  </div>
+                                  <div>
+                                    <h4 className="text-[13px] font-bold text-[#0F172A] tracking-tight group-hover:text-[#7C3AED] transition-colors leading-snug">
+                                      {subItem.title}
+                                    </h4>
+                                    <p className="text-[11px] text-slate-500 font-normal leading-tight mt-0.5">
+                                      {subItem.description}
+                                    </p>
+                                  </div>
+                                </Link>
+                              </motion.div>
+                            );
+                          })}
+
+                          {/* BOTTOM FOOTER BAR */}
+                          <div className="border-t border-slate-100 pt-2 mt-0.5 px-2 flex items-center justify-between">
+                            <Link
+                              href="/services"
+                              className="text-[11.5px] font-semibold text-slate-700 hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 group"
+                            >
+                              <span>View all services</span>
+                            </Link>
+                            <Link
+                              href="/services"
+                              aria-label="View all services"
+                              className="text-slate-400 group-hover:text-[#7C3AED] transition-colors"
+                            >
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </Link>
+                          </div>
                         </div>
                       </motion.div>
                     )}
@@ -151,15 +223,15 @@ export function Navbar() {
         </nav>
       </div>
 
-      {/* 3. Far Right: Small Circular Floating AI Icon Button */}
+      {/* 3. Top-Right Corner: Ask AI Icon Button OUTSIDE the floating navbar pill */}
       <div className="pointer-events-auto hidden sm:flex items-center shrink-0">
         <Link
           href="/ask-ai"
-          className="w-[34px] h-[34px] rounded-full glass-circle-btn flex items-center justify-center text-[#1A1A1A] hover:text-[#7C3AED] cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
+          className="w-[36px] h-[36px] rounded-full glass-circle-btn flex items-center justify-center text-[#1A1A1A] hover:text-[#7C3AED] cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
           title="Ask AI"
           aria-label="Ask AI Assistant"
         >
-          <Bot className="w-3.5 h-3.5 text-[#7C3AED]" />
+          <Bot className="w-4 h-4 text-[#7C3AED]" />
         </Link>
       </div>
 
@@ -191,7 +263,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="pointer-events-auto absolute top-14 left-4 right-4 glass-header-neutral rounded-2xl p-4 shadow-xl flex flex-col gap-2 md:hidden border border-white/80"
+            className="pointer-events-auto absolute top-full left-4 right-4 mt-3 glass-header-neutral rounded-2xl p-4 shadow-xl flex flex-col gap-2 md:hidden border border-white/80"
           >
             <nav aria-label="Mobile Navigation" className="flex flex-col gap-1.5">
               {navigationConfig.mainNav.map((item) => {
@@ -222,14 +294,14 @@ export function Navbar() {
 
                     {isServices && isServicesOpenMobile && (
                       <div className="flex flex-col gap-1 items-start pl-4 pt-1 pb-2">
-                        {servicesSubmenu.map((subItem) => (
+                        {richServicesSubmenu.map((subItem) => (
                           <Link
-                            key={subItem.label}
+                            key={subItem.title}
                             href={subItem.href}
                             onClick={() => setIsOpen(false)}
-                            className="text-xs font-semibold text-slate-700 hover:text-[#7C3AED] py-1 px-3 rounded-full bg-slate-100/60"
+                            className="text-xs font-semibold text-slate-700 hover:text-[#7C3AED] py-1.5 px-3 rounded-full bg-slate-100/60 block w-full text-left"
                           >
-                            {subItem.label}
+                            {subItem.title}
                           </Link>
                         ))}
                       </div>
