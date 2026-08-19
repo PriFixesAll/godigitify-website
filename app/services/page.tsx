@@ -15,7 +15,10 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { CallToActionSection } from '@/features/cta/components/CallToActionSection';
 import { OurServicesReferenceSection } from '@/features/services/components/OurServicesReferenceSection';
+import { ServicesMasteryEcosystem } from '@/features/services/components/ServicesMasteryEcosystem';
 import { ServicesHeroSection } from '@/features/services/components/ServicesHeroSection';
+import { WhoThisServiceIsForSection } from '@/features/services/components/WhoThisServiceIsForSection';
+import { OurProcessInterlockingSection } from '@/features/process/components/OurProcessInterlockingSection';
 
 interface ServiceItem {
   id: string;
@@ -113,8 +116,11 @@ export default function ServicesPage() {
         {/* NEW TOP HERO SECTION CLONED FROM ATTACHED REFERENCE IMAGE */}
         <ServicesHeroSection />
 
-        {/* OUR SERVICES PILLARS (01 BRAND, 02 MARKETING, 03 PRODUCT) */}
-        <OurServicesReferenceSection />
+        {/* ONE CONNECTED MASTERY ECOSYSTEM (ANIMATED VENN SLIDE) */}
+        <ServicesMasteryEcosystem />
+
+        {/* WHO THIS SERVICE IS FOR SECTION */}
+        <WhoThisServiceIsForSection />
 
         {/* SERVICE FILTER TABS */}
         <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10 mb-12">

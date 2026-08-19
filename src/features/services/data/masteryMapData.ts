@@ -1,0 +1,258 @@
+export interface CapabilityItem {
+  id: string;
+  name: string;
+  category: 'brand' | 'design' | 'technology' | 'ai' | 'growth' | 'strategy';
+  isPrimary: boolean;
+  /** Percentage position relative to center container: x: -50 (far left / Brand) to +50 (far right / Product), y: -50 (top) to +50 (bottom) */
+  x: number;
+  y: number;
+  relatedIds: string[];
+}
+
+export const masteryCapabilities: CapabilityItem[] = [
+  // --- BRAND (Left Side) ---
+  {
+    id: 'brand-strategy',
+    name: 'Brand Strategy',
+    category: 'brand',
+    isPrimary: true,
+    x: -38,
+    y: -24,
+    relatedIds: ['brand-identity', 'visual-identity', 'creative-direction', 'gtm-strategy', 'product-strategy'],
+  },
+  {
+    id: 'brand-identity',
+    name: 'Brand Identity',
+    category: 'brand',
+    isPrimary: true,
+    x: -34,
+    y: -8,
+    relatedIds: ['brand-strategy', 'visual-identity', 'creative-direction', 'design-systems'],
+  },
+  {
+    id: 'visual-identity',
+    name: 'Visual Identity',
+    category: 'brand',
+    isPrimary: false,
+    x: -36,
+    y: 8,
+    relatedIds: ['brand-identity', 'brand-strategy', 'creative-direction', 'ui-ux-design'],
+  },
+  {
+    id: 'creative-direction',
+    name: 'Creative Direction',
+    category: 'brand',
+    isPrimary: false,
+    x: -40,
+    y: 22,
+    relatedIds: ['brand-strategy', 'visual-identity', 'ui-ux-design', 'social-media'],
+  },
+
+  // --- DESIGN (Central Mastery Area) ---
+  {
+    id: 'ui-ux-design',
+    name: 'UI/UX Design',
+    category: 'design',
+    isPrimary: true,
+    x: -16,
+    y: -22,
+    relatedIds: ['product-design', 'web-design', 'design-systems', 'visual-identity', 'web-development'],
+  },
+  {
+    id: 'web-design',
+    name: 'Web Design',
+    category: 'design',
+    isPrimary: true,
+    x: -6,
+    y: -34,
+    relatedIds: ['ui-ux-design', 'product-design', 'design-systems', 'web-development'],
+  },
+  {
+    id: 'product-design',
+    name: 'Product Design',
+    category: 'design',
+    isPrimary: true,
+    x: 8,
+    y: -34,
+    relatedIds: ['ui-ux-design', 'web-design', 'design-systems', 'web-applications', 'saas-development'],
+  },
+  {
+    id: 'design-systems',
+    name: 'Design Systems',
+    category: 'design',
+    isPrimary: true,
+    x: 0,
+    y: -14,
+    relatedIds: ['ui-ux-design', 'web-design', 'product-design', 'brand-identity', 'web-development'],
+  },
+
+  // --- TECHNOLOGY (Right Side) ---
+  {
+    id: 'web-development',
+    name: 'Web Development',
+    category: 'technology',
+    isPrimary: true,
+    x: 18,
+    y: -22,
+    relatedIds: ['web-applications', 'saas-development', 'e-commerce', 'ui-ux-design', 'mobile-applications'],
+  },
+  {
+    id: 'web-applications',
+    name: 'Web Applications',
+    category: 'technology',
+    isPrimary: true,
+    x: 32,
+    y: -28,
+    relatedIds: ['web-development', 'saas-development', 'e-commerce', 'ai-integration'],
+  },
+  {
+    id: 'mobile-applications',
+    name: 'Mobile Applications',
+    category: 'technology',
+    isPrimary: false,
+    x: 40,
+    y: -12,
+    relatedIds: ['web-applications', 'saas-development', 'ui-ux-design'],
+  },
+  {
+    id: 'saas-development',
+    name: 'SaaS Development',
+    category: 'technology',
+    isPrimary: true,
+    x: 36,
+    y: 4,
+    relatedIds: ['web-applications', 'web-development', 'product-design', 'ai-integration'],
+  },
+  {
+    id: 'e-commerce',
+    name: 'E-Commerce',
+    category: 'technology',
+    isPrimary: false,
+    x: 38,
+    y: 20,
+    relatedIds: ['web-development', 'web-applications', 'performance-marketing'],
+  },
+
+  // --- AI & AUTOMATION (Supporting Central-Right) ---
+  {
+    id: 'ai-solutions',
+    name: 'AI Solutions',
+    category: 'ai',
+    isPrimary: true,
+    x: 12,
+    y: 18,
+    relatedIds: ['ai-integration', 'business-automation', 'workflow-automation', 'saas-development'],
+  },
+  {
+    id: 'ai-integration',
+    name: 'AI Integration',
+    category: 'ai',
+    isPrimary: false,
+    x: 24,
+    y: 28,
+    relatedIds: ['ai-solutions', 'business-automation', 'web-applications'],
+  },
+  {
+    id: 'business-automation',
+    name: 'Business Automation',
+    category: 'ai',
+    isPrimary: false,
+    x: 4,
+    y: 34,
+    relatedIds: ['workflow-automation', 'ai-solutions', 'digital-transformation'],
+  },
+  {
+    id: 'workflow-automation',
+    name: 'Workflow Automation',
+    category: 'ai',
+    isPrimary: false,
+    x: -8,
+    y: 34,
+    relatedIds: ['business-automation', 'ai-solutions', 'technology-consulting'],
+  },
+
+  // --- GROWTH (Supporting Left-Bottom) ---
+  {
+    id: 'digital-marketing',
+    name: 'Digital Marketing',
+    category: 'growth',
+    isPrimary: true,
+    x: -22,
+    y: 20,
+    relatedIds: ['seo', 'social-media', 'performance-marketing', 'analytics'],
+  },
+  {
+    id: 'seo',
+    name: 'SEO',
+    category: 'growth',
+    isPrimary: false,
+    x: -30,
+    y: 32,
+    relatedIds: ['digital-marketing', 'analytics', 'performance-marketing'],
+  },
+  {
+    id: 'social-media',
+    name: 'Social Media',
+    category: 'growth',
+    isPrimary: false,
+    x: -16,
+    y: 32,
+    relatedIds: ['digital-marketing', 'creative-direction', 'analytics'],
+  },
+  {
+    id: 'performance-marketing',
+    name: 'Performance Marketing',
+    category: 'growth',
+    isPrimary: true,
+    x: -26,
+    y: 8,
+    relatedIds: ['digital-marketing', 'analytics', 'e-commerce', 'gtm-strategy'],
+  },
+  {
+    id: 'analytics',
+    name: 'Analytics',
+    category: 'growth',
+    isPrimary: true,
+    x: -12,
+    y: 20,
+    relatedIds: ['digital-marketing', 'seo', 'performance-marketing', 'product-strategy'],
+  },
+
+  // --- STRATEGY (Supporting Mid-System) ---
+  {
+    id: 'digital-transformation',
+    name: 'Digital Transformation',
+    category: 'strategy',
+    isPrimary: true,
+    x: -4,
+    y: 18,
+    relatedIds: ['technology-consulting', 'business-automation', 'product-strategy'],
+  },
+  {
+    id: 'technology-consulting',
+    name: 'Technology Consulting',
+    category: 'strategy',
+    isPrimary: false,
+    x: 16,
+    y: 6,
+    relatedIds: ['digital-transformation', 'ai-solutions', 'saas-development'],
+  },
+  {
+    id: 'product-strategy',
+    name: 'Product Strategy',
+    category: 'strategy',
+    isPrimary: true,
+    x: 6,
+    y: -18,
+    relatedIds: ['brand-strategy', 'product-design', 'gtm-strategy'],
+  },
+  {
+    id: 'gtm-strategy',
+    name: 'GTM Strategy',
+    category: 'strategy',
+    isPrimary: false,
+    x: -20,
+    y: -8,
+    relatedIds: ['brand-strategy', 'performance-marketing', 'product-strategy'],
+  },
+];

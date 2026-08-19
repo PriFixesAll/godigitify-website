@@ -94,33 +94,33 @@ export function ScaleSection() {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
-  const size = 360;
+  const size = 540;
   const center = size / 2;
-  const orbitRadius = 145; // 145px radius
-  const innerRadius = 45; // 45px radius for center "Services" circle boundary
+  const orbitRadius = 210; // 210px radius for generous open spacing between nodes
+  const innerRadius = 60; // 60px radius for center "Services" circle boundary
   const totalItems = serviceNodes.length;
 
   return (
-    <section className="relative py-20 lg:py-28 bg-[#FFFFFF] text-[#0F172A] overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+    <section className="relative py-20 lg:py-32 bg-[#FFFFFF] text-[#0F172A] overflow-hidden select-none">
+      <div className="max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1680px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* LEFT COLUMN: HEADLINE, PARAGRAPH, CHECKLIST, STATS (NO CTA BUTTONS) */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 flex flex-col items-start text-left"
+            className="lg:col-span-6 flex flex-col items-start text-left"
           >
-            {/* H1 Headline (Less Bold) */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold tracking-tight leading-[1.1] mb-4">
+            {/* H1 Headline */}
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.1] mb-5 font-cera">
               <span className="text-[#7C3AED]">Scale</span>{' '}
               <span className="text-[#0F172A]">Without</span>{' '}
               <span className="text-[#7C3AED]">Chaos</span>
             </h2>
 
             {/* Body Paragraph */}
-            <p className="text-[#4B5563] text-sm sm:text-base lg:text-[15.5px] leading-relaxed font-normal mb-6 max-w-xl">
+            <p className="text-[#4B5563] text-base sm:text-lg lg:text-xl leading-relaxed font-normal mb-8 max-w-2xl lg:max-w-3xl">
               We build <strong className="text-[#0F172A] font-semibold">integrated digital ecosystems</strong> that replace fragmented tactics with predictable, automated growth systems. For established businesses ready to move from effort-based execution to scalable infrastructure.
             </p>
 
@@ -155,38 +155,38 @@ export function ScaleSection() {
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: CIRCULAR ORBIT WITH DECREASED CARD WIDTH (140px x 42px) */}
+          {/* RIGHT COLUMN: ENLARGED CIRCULAR ORBIT ARENA */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            className="lg:col-span-5 flex justify-center items-center relative"
+            className="lg:col-span-6 flex justify-center items-center relative overflow-visible"
           >
-            {/* 360px x 360px Orbit Arena */}
-            <div className="relative w-[360px] h-[360px] flex items-center justify-center">
+            {/* ENLARGED 540px x 540px Orbit Arena */}
+            <div className="relative w-[540px] h-[540px] flex items-center justify-center shrink-0">
               {/* Scattered Dot-Grid Pattern */}
               <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
 
               {/* EXACT CENTER: "Services" Circle */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none shrink-0">
-                <div className="w-24 h-24 sm:w-26 sm:h-26 rounded-full border border-dashed border-[#7C3AED]/30 bg-white/90 backdrop-blur-md shadow-[0_0_20px_rgba(124,58,237,0.15)] flex items-center justify-center">
-                  <span className="text-xs sm:text-sm font-semibold tracking-normal text-[#0F172A]">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border border-dashed border-[#7C3AED]/40 bg-white/95 backdrop-blur-md shadow-[0_0_30px_rgba(124,58,237,0.18)] flex items-center justify-center">
+                  <span className="text-sm sm:text-base font-extrabold tracking-tight text-[#0F172A] font-cera">
                     Services
                   </span>
                 </div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-18 h-18 bg-[#7C3AED]/20 rounded-full blur-xl animate-pulse" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#7C3AED]/20 rounded-full blur-2xl animate-pulse" />
               </div>
 
               {/* Outer Stationary Dashed Circular Track */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#7C3AED]/20 pointer-events-none z-10"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#7C3AED]/30 pointer-events-none z-10"
                 style={{ width: orbitRadius * 2, height: orbitRadius * 2 }}
               />
 
               {/* CONNECTING LINES IN SVG */}
               <svg
-                className="absolute inset-0 w-full h-full pointer-events-none z-10 text-[#7C3AED]/20"
+                className="absolute inset-0 w-full h-full pointer-events-none z-10 text-[#7C3AED]/30"
                 viewBox={`0 0 ${size} ${size}`}
               >
                 {serviceNodes.map((_, idx) => {
@@ -205,20 +205,20 @@ export function ScaleSection() {
                       x2={x2}
                       y2={y2}
                       stroke="currentColor"
-                      strokeWidth="1.25"
-                      strokeDasharray="3 3"
+                      strokeWidth="1.5"
+                      strokeDasharray="4 4"
                     />
                   );
                 })}
               </svg>
 
-              {/* NARROWER 140px OPTION BOXES (140px x 42px) */}
+              {/* PROPORTIONAL & SEPARATED ROTATING RECTANGULAR BOXES */}
               {serviceNodes.map((node, idx) => {
                 const NodeIcon = node.icon;
                 const itemAngle = (360 / totalItems) * idx + rotationAngle - 90;
                 const rad = (itemAngle * Math.PI) / 180;
                 
-                // Exact 2D Circular Coordinate Calculation at 145px Radius
+                // Exact 2D Circular Coordinate Calculation at 210px Radius
                 const x = orbitRadius * Math.cos(rad);
                 const y = orbitRadius * Math.sin(rad);
 
@@ -228,22 +228,22 @@ export function ScaleSection() {
                     className="absolute top-1/2 left-1/2 z-30 transition-transform duration-75 ease-linear pointer-events-auto shrink-0"
                     style={{
                       transform: `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`,
-                      width: '140px',
-                      height: '42px',
+                      width: '175px',
+                      height: '52px',
                     }}
                   >
                     <Link
                       href={node.href}
-                      className="w-[140px] h-[42px] shrink-0 bg-white border-1.5 border-[#E5E7EB] px-2 py-1.5 rounded-[10px] shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_10px_24px_rgba(124,58,237,0.32)] hover:border-[#7C3AED] hover:scale-108 transition-all duration-200 flex items-center gap-1.5 cursor-pointer group box-border overflow-hidden"
+                      className="w-[175px] h-[52px] shrink-0 bg-white border border-slate-200/90 px-3 py-2 rounded-xl shadow-[0_6px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_28px_rgba(124,58,237,0.3)] hover:border-[#7C3AED] hover:scale-105 transition-all duration-200 flex items-center gap-2.5 cursor-pointer group box-border overflow-hidden"
                     >
-                      <div className="w-5.5 h-5.5 rounded-md bg-[#7C3AED]/10 text-[#7C3AED] group-hover:bg-[#7C3AED] group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_0_10px_rgba(124,58,237,0.5)] transition-all duration-200 flex items-center justify-center shrink-0">
-                        <NodeIcon className="w-3.5 h-3.5" />
+                      <div className="w-7 h-7 rounded-lg bg-[#F3E8FF] text-[#7C3AED] group-hover:bg-[#7C3AED] group-hover:text-white group-hover:scale-105 transition-all duration-200 flex items-center justify-center shrink-0 border border-[#E9D8F8]">
+                        <NodeIcon className="w-4 h-4" />
                       </div>
                       <div className="flex flex-col text-left justify-center min-w-0">
-                        <span className="text-[10.5px] font-semibold text-[#0F172A] group-hover:text-[#7C3AED] transition-colors whitespace-nowrap">
+                        <span className="text-xs font-bold text-[#0F172A] group-hover:text-[#7C3AED] transition-colors whitespace-nowrap font-cera">
                           {node.title}
                         </span>
-                        <span className="text-[8.5px] text-[#4B5563] whitespace-nowrap">
+                        <span className="text-[10px] text-slate-500 font-normal whitespace-nowrap">
                           {node.subtitle}
                         </span>
                       </div>

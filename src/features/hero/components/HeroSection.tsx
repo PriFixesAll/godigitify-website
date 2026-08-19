@@ -30,31 +30,40 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-4xl mx-auto flex flex-col items-center text-center my-auto px-6 relative z-10"
+        className="max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto flex flex-col items-center text-center my-auto px-6 sm:px-10 relative z-10"
       >
-        {/* Headline strictly set to 36px font size on desktop */}
-        <h1 className="text-3xl sm:text-4xl lg:text-[36px] font-extrabold text-[#1A1A1A] tracking-tight leading-[1.2] mb-6 max-w-2xl">
+        {/* Refined Fluid Headline scaling naturally across screen sizes */}
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-[58px] font-extrabold text-[#1A1A1A] tracking-tight leading-[1.18] mb-6 max-w-3xl lg:max-w-4xl font-cera">
           Engineering Digital Systems That Drive Growth
         </h1>
 
-        {/* Short Supporting Paragraph */}
-        <p className="text-slate-700 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed mb-8 font-normal">
+        {/* Supporting Paragraph */}
+        <p className="text-slate-700 text-sm sm:text-base lg:text-lg xl:text-xl max-w-2xl lg:max-w-3xl leading-relaxed mb-8 font-normal">
           We design and build integrated digital ecosystems that streamline operations, accelerate innovation, and deliver measurable business impact.
         </p>
 
         {/* Action CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+          
+          {/* GET STARTED CTA BUTTON WITH LEFT -> RIGHT ROUNDED WIPE HOVER ANIMATION */}
           <Link
             href="/contact"
-            className="w-full sm:w-auto btn-purple-primary font-semibold text-xs px-6 py-3 rounded-full flex items-center justify-center gap-2 cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d286e] focus-visible:ring-offset-2"
+            className="btn-purple-primary group w-full sm:w-auto font-semibold text-sm sm:text-base lg:text-lg px-8 py-3.5 sm:px-10 sm:py-4 rounded-full flex items-center justify-center cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d286e] focus-visible:ring-offset-2 select-none"
           >
-            <span>Get Started</span>
-            <ArrowRight className="w-3.5 h-3.5 text-white/90" />
+            {/* INTERNAL ANIMATED FILL LAYER (ROUNDED LEADING EDGE WIPE) */}
+            <span className="btn-purple-primary-fill" />
+
+            {/* STATIONARY CONTENT LAYER (TEXT + ARROW) */}
+            <span className="btn-purple-primary-content font-cera">
+              <span>Get Started</span>
+              <ArrowRight className="w-5 h-5 text-white/95 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
           </Link>
 
+          {/* EXPLORE SERVICES CTA BUTTON */}
           <Link
             href="/services"
-            className="w-full sm:w-auto btn-purple-secondary font-semibold text-xs px-6 py-3 rounded-full flex items-center justify-center gap-2 cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d286e] focus-visible:ring-offset-2"
+            className="w-full sm:w-auto btn-purple-secondary font-semibold text-sm sm:text-base lg:text-lg px-8 py-3.5 sm:px-10 sm:py-4 rounded-full flex items-center justify-center gap-2.5 cursor-pointer shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4d286e] focus-visible:ring-offset-2 transition-transform hover:scale-105"
           >
             <span>Explore Services</span>
           </Link>

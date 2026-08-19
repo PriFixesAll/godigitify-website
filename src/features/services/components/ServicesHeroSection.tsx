@@ -14,7 +14,7 @@ export function ServicesHeroSection() {
       {/* AMBIENT GLOW PURPLE/CYAN BLUR ACCENTS */}
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-[#7C3AED]/12 via-[#A855F7]/10 to-[#06B6D4]/10 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+      <div className="max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10 text-center">
         {/* 2. TOP SPARKLE ICON BADGE */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -30,30 +30,30 @@ export function ServicesHeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="mb-4 max-w-2xl mx-auto"
+          className="mb-6 max-w-4xl lg:max-w-5xl mx-auto"
         >
           {/* LINE 1 */}
-          <div className="flex items-center justify-center flex-wrap gap-x-2 gap-y-1 mb-1">
-            <span className="font-serif italic text-2xl sm:text-4xl lg:text-5xl font-normal text-[#0F172A] tracking-tight">
+          <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-2 mb-2">
+            <span className="font-serif italic text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal text-[#0F172A] tracking-tight">
               Complete
             </span>
-            <span className="font-cera font-semibold text-2xl sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#8042C0] via-[#7139AA] to-[#49226D] tracking-tight inline-block pb-1 leading-normal">
+            <span className="font-cera font-semibold text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#8042C0] via-[#7139AA] to-[#49226D] tracking-tight inline-block pb-1 leading-normal">
               Digital
             </span>
           </div>
 
           {/* LINE 2 */}
-          <div className="flex items-center justify-center flex-wrap gap-x-2 gap-y-1">
+          <div className="flex items-center justify-center flex-wrap gap-x-3 gap-y-2">
             {/* RECTANGLE WITH LOW CORNER RADIUS & LOW OPACITY GRADIENT */}
             <div className="relative inline-flex items-center my-0.5">
-              <div className="relative px-3.5 sm:px-5 py-0.5 rounded-lg bg-white/60 backdrop-blur-md shadow-sm border border-[#7139AA]/30 bg-gradient-to-r from-[#8042C0]/15 via-[#7139AA]/10 to-[#49226D]/15 flex items-center justify-center">
-                <span className="relative z-10 text-[#0F172A] font-cera font-semibold text-2xl sm:text-4xl lg:text-5xl tracking-tight">
+              <div className="relative px-4 sm:px-6 py-1 rounded-xl bg-white/60 backdrop-blur-md shadow-sm border border-[#7139AA]/30 bg-gradient-to-r from-[#8042C0]/15 via-[#7139AA]/10 to-[#49226D]/15 flex items-center justify-center">
+                <span className="relative z-10 text-[#0F172A] font-cera font-semibold text-3xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight">
                   Growth
                 </span>
               </div>
             </div>
 
-            <span className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-semibold text-[#48236C] tracking-tight">
+            <span className="font-editorial text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-[#48236C] tracking-tight">
               Ecosystem
             </span>
           </div>
@@ -64,7 +64,7 @@ export function ServicesHeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="text-slate-600 font-normal text-xs sm:text-sm lg:text-base max-w-lg mx-auto mb-7 leading-relaxed"
+          className="text-slate-600 font-normal text-sm sm:text-base lg:text-lg max-w-xl sm:max-w-2xl lg:max-w-3xl mx-auto mb-9 leading-relaxed"
         >
           We combine strategy, design, technology, AI and growth to build connected systems that drive{' '}
           <strong className="font-semibold text-[#0F172A]">real business impact</strong>.
@@ -75,16 +75,16 @@ export function ServicesHeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="mb-12"
+          className="mb-14"
         >
           <div className="relative inline-block group">
             <div className="absolute -inset-1 bg-gradient-to-r from-[#7C3AED]/40 via-[#06B6D4]/40 to-[#A855F7]/40 rounded-full blur-md opacity-70 group-hover:opacity-100 transition-opacity" />
             <Link
               href="#our-services-pillars"
-              className="relative px-7 py-3 rounded-full bg-[#0B0F19] text-white font-semibold text-xs shadow-xl inline-flex items-center gap-2 transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+              className="relative px-8 py-3.5 rounded-full bg-[#0B0F19] text-white font-semibold text-sm shadow-xl inline-flex items-center gap-2.5 transition-transform duration-300 group-hover:scale-105 cursor-pointer"
             >
               <span>Explore Our Services</span>
-              <ArrowRight className="w-3.5 h-3.5 text-white group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </motion.div>
@@ -95,9 +95,9 @@ export function ServicesHeroSection() {
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="hidden md:flex absolute top-48 left-6 lg:left-12 w-14 h-14 rounded-2xl bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 items-center justify-center -rotate-12 hover:rotate-0 transition-transform duration-300 z-20"
+          className="hidden md:flex absolute top-48 left-4 sm:left-10 lg:left-16 xl:left-24 w-16 h-16 rounded-2xl bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 items-center justify-center -rotate-12 hover:rotate-0 transition-transform duration-300 z-20"
         >
-          <div className="w-8 h-8 rounded-lg bg-[#95BF47]/15 flex items-center justify-center text-[#95BF47] font-bold text-xs">
+          <div className="w-9 h-9 rounded-xl bg-[#95BF47]/15 flex items-center justify-center text-[#95BF47] font-bold text-sm">
             🛍️
           </div>
         </motion.div>
@@ -107,9 +107,9 @@ export function ServicesHeroSection() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="hidden md:flex absolute top-48 right-6 lg:right-12 w-14 h-14 rounded-2xl bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 items-center justify-center rotate-12 hover:rotate-0 transition-transform duration-300 z-20"
+          className="hidden md:flex absolute top-48 right-4 sm:right-10 lg:right-16 xl:right-24 w-16 h-16 rounded-2xl bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 items-center justify-center rotate-12 hover:rotate-0 transition-transform duration-300 z-20"
         >
-          <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-xs">
+          <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-sm">
             🎯
           </div>
         </motion.div>
@@ -119,9 +119,9 @@ export function ServicesHeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="hidden md:flex absolute bottom-24 right-10 lg:right-20 w-14 h-14 rounded-2xl bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 items-center justify-center rotate-6 hover:rotate-0 transition-transform duration-300 z-20"
+          className="hidden md:flex absolute bottom-24 right-8 sm:right-16 lg:right-24 xl:right-36 w-16 h-16 rounded-2xl bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border border-slate-100/90 items-center justify-center rotate-6 hover:rotate-0 transition-transform duration-300 z-20"
         >
-          <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-[#0668E1] font-extrabold text-sm">
+          <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-[#0668E1] font-extrabold text-base">
             ∞
           </div>
         </motion.div>
@@ -131,7 +131,7 @@ export function ServicesHeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
-          className="max-w-5xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(15,23,42,0.12)] border border-slate-200/80 bg-white text-left relative z-10"
+          className="max-w-6xl lg:max-w-7xl xl:max-w-[1360px] mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(15,23,42,0.12)] border border-slate-200/80 bg-white text-left relative z-10"
         >
           {/* macOS Window Top Bar */}
           <div className="bg-[#F8F9FA] px-4 py-3 border-b border-slate-200/80 flex items-center justify-between">

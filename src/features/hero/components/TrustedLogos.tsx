@@ -75,7 +75,7 @@ export function TrustedLogos() {
   const queueLogos = [...logos, ...logos, ...logos, ...logos];
 
   return (
-    <div className="w-full max-w-6xl mx-auto mt-16 pt-6 flex flex-col items-center overflow-hidden">
+    <div className="w-full max-w-7xl xl:max-w-[1400px] mx-auto mt-16 pt-6 flex flex-col items-center overflow-hidden">
       {/* Subtitle */}
       <p className="text-xs sm:text-sm font-medium text-slate-500 tracking-wide mb-8">
         Trusted by forward-thinking companies

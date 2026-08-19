@@ -55,7 +55,7 @@ export function Footer() {
       className="relative w-full bg-[#05020A] text-white py-10 px-4 sm:px-6 lg:px-8 select-none"
     >
       {/* CARD CONTAINER MATCHING REFERENCE IMAGE */}
-      <div className="max-w-7xl mx-auto bg-[#0D0819] rounded-[28px] sm:rounded-[36px] border border-white/10 p-8 sm:p-12 lg:p-14 relative overflow-hidden shadow-2xl">
+      <div className="max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1680px] mx-auto bg-[#0D0819] rounded-[28px] sm:rounded-[36px] border border-white/10 p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl">
         
         {/* SOFT AMBIENT PURPLE GLOW */}
         <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[85%] h-[260px] bg-[#7C3AED]/25 rounded-full blur-[130px] pointer-events-none z-0" />

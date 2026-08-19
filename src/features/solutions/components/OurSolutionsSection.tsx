@@ -108,46 +108,40 @@ export function OurSolutionsSection() {
   return (
     <section
       id="our-solutions"
-      className="relative pt-4 pb-16 md:pt-6 md:pb-24 bg-[#FAF9FC] text-[#0F172A] overflow-hidden select-none"
+      className="relative pt-18 sm:pt-22 pb-16 sm:pb-20 bg-[#FAF9FC] text-[#0F172A] overflow-hidden select-none"
     >
-      {/* VIBRANT & SOFTLY BALANCED ETHEREAL LIGHT PILLARS BACKGROUND (REDUCED OPACITY) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-30">
-        {/* Off-White Base */}
-        <div className="absolute inset-0 bg-[#FAF9FC]" />
+      {/* TOP ERASER GRADIENT FADE OVERLAY — SEAMLESSLY DISSOLVES GRID INTO PREVIOUS SECTION */}
+      <div className="absolute top-0 inset-x-0 h-28 sm:h-40 bg-gradient-to-b from-[#FAF9FC] via-[#FAF9FC]/90 to-transparent pointer-events-none z-10" />
 
-        {/* Distinct Ethereal Vertical Light Beams Rising from Bottom */}
-        <div className="absolute bottom-0 left-[2%] w-60 h-[85%] bg-gradient-to-t from-[#60A5FA]/40 via-[#A78BFA]/20 to-transparent blur-2xl rounded-t-full" />
-        <div className="absolute bottom-0 left-[24%] w-72 h-[95%] bg-gradient-to-t from-[#818CF8]/50 via-[#C4B5FD]/25 to-transparent blur-2xl rounded-t-full" />
-        <div className="absolute bottom-0 left-[48%] w-72 h-[95%] bg-gradient-to-t from-[#38BDF8]/45 via-[#A78BFA]/25 to-transparent blur-2xl rounded-t-full" />
-        <div className="absolute bottom-0 left-[72%] w-60 h-[85%] bg-gradient-to-t from-[#60A5FA]/40 via-[#C4B5FD]/20 to-transparent blur-2xl rounded-t-full" />
+      {/* ELEGANT BACKGROUND GRID LINES WITH RADIAL FADE MASK */}
+      <div className="absolute inset-0 pointer-events-none opacity-40 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] bg-[size:90px_90px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_50%,#000_30%,transparent_95%)] z-0" />
 
-        {/* Soft Bottom Luminous Fog */}
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#818CF8]/25 via-[#C4B5FD]/12 to-transparent blur-xl" />
-      </div>
+      {/* AMBIENT GLOW PURPLE/CYAN BLUR ACCENTS */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[650px] h-[320px] bg-gradient-to-tr from-[#7C3AED]/14 via-[#A855F7]/12 to-[#06B6D4]/10 rounded-full blur-[130px] pointer-events-none z-0" />
 
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-10 relative z-10 flex flex-col items-center text-center">
+      <div className="max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1680px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20 relative z-10 flex flex-col items-center text-center">
         {/* HEADER SECTION — CENTER ALIGNED IN THE MIDDLE */}
-        <div className="flex flex-col items-center text-center mb-8 sm:mb-10 max-w-2xl mx-auto">
+        <div className="flex flex-col items-center text-center mb-7 sm:mb-9 max-w-3xl mx-auto">
           {/* Top Tagline Badge */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.25, once: true }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="flex items-center gap-2.5 text-xs font-medium tracking-wider text-[#7C3AED] uppercase mb-2"
+            className="flex items-center gap-2 text-xs font-medium tracking-wider text-[#7C3AED] uppercase mb-1.5"
           >
-            <span className="w-4 h-0.5 bg-[#7C3AED]/60" />
+            <span className="w-3.5 h-0.5 bg-[#7C3AED]/60" />
             <span>GROWTH SYSTEMS ARCHITECTURE</span>
-            <span className="w-4 h-0.5 bg-[#7C3AED]/60" />
+            <span className="w-3.5 h-0.5 bg-[#7C3AED]/60" />
           </motion.div>
 
-          {/* Main Title (30px Font Size, font-semibold) */}
+          {/* Main Title */}
           <motion.h2
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.25, once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-            className="text-[30px] font-semibold tracking-tight text-[#4C1D95] leading-tight mb-2"
+            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#0F172A] leading-tight font-cera"
           >
             Our <span className="text-[#7C3AED]">Solutions</span>
           </motion.h2>
@@ -158,22 +152,22 @@ export function OurSolutionsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.25, once: true }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.18 }}
-            className="text-xs sm:text-sm text-[#64748B] font-normal max-w-lg leading-relaxed"
+            className="text-sm sm:text-base text-[#64748B] font-normal max-w-xl leading-relaxed mt-1.5"
           >
             Integrated systems that replace fragmented tactics with predictable, automated growth infrastructure
           </motion.p>
         </div>
 
         {/* CONTROLS & STACKED CARDS WRAPPER */}
-        <div className="w-full max-w-[880px] mx-auto flex flex-col items-center">
+        <div className="w-full max-w-[1080px] xl:max-w-[1160px] 2xl:max-w-[1240px] mx-auto flex flex-col items-center">
           {/* Center-Aligned Navigation Arrow Controls */}
-          <div className="flex items-center justify-center gap-2.5 mb-5">
+          <div className="flex items-center justify-center gap-3 mb-5">
             <button
               onClick={handlePrev}
               aria-label="Previous Solution"
               className="w-9 h-9 rounded-full bg-[#110C24] text-white hover:bg-[#7C3AED] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer shadow-md"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4.5 h-4.5" />
             </button>
 
             <button
@@ -181,12 +175,12 @@ export function OurSolutionsSection() {
               aria-label="Next Solution"
               className="w-9 h-9 rounded-full bg-[#110C24] text-white hover:bg-[#7C3AED] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer shadow-md"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-4.5 h-4.5" />
             </button>
           </div>
 
           {/* DESKTOP & TABLET: INITIALLY VISIBLE COLOR IMAGES, B&W + TEXT FOCUS ON HOVER */}
-          <div className="hidden md:flex flex-row gap-3 h-[290px] w-full items-stretch justify-center py-2">
+          <div className="hidden md:flex flex-row gap-3.5 sm:gap-4.5 h-[340px] lg:h-[370px] w-full items-stretch justify-center py-1">
             {solutions.map((item, index) => {
               const isActive = activeIndex === index;
 
@@ -201,12 +195,12 @@ export function OurSolutionsSection() {
                     stiffness: 260,
                     damping: 24,
                   }}
-                  className={`relative rounded-xl cursor-pointer overflow-hidden transition-all duration-300 flex flex-col justify-between p-4 lg:p-5 text-left border group backdrop-blur-sm ${
+                  className={`relative rounded-2xl cursor-pointer overflow-hidden transition-all duration-300 flex flex-col justify-between p-5 lg:p-6 text-left border group backdrop-blur-sm ${
                     item.colorBg
                   } ${
                     isActive
-                      ? 'flex-[3.2] shadow-[0_20px_40px_rgba(124,58,237,0.22)] border-[#7C3AED]/40 ring-2 ring-[#7C3AED]/25'
-                      : 'flex-[0.85] opacity-95 hover:opacity-100 shadow-[0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_38px_rgba(124,58,237,0.20)] border-white/60 hover:border-[#7C3AED]/40'
+                      ? 'flex-[3.4] shadow-[0_20px_42px_rgba(124,58,237,0.24)] border-[#7C3AED]/40 ring-2 ring-[#7C3AED]/25'
+                      : 'flex-[0.95] opacity-95 hover:opacity-100 shadow-[0_5px_14px_rgba(0,0,0,0.035)] hover:shadow-[0_18px_36px_rgba(124,58,237,0.19)] border-white/60 hover:border-[#7C3AED]/40'
                   }`}
                 >
                   {/* BACKGROUND IMAGE: INITIALLY FULL VIVID COLOR & HIGH VISIBILITY, B&W + SOFTENED ON HOVER */}

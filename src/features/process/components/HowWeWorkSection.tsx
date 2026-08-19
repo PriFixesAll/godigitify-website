@@ -148,16 +148,16 @@ export function HowWeWorkSection() {
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#C4B5FD]/10 rounded-full blur-3xl pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+      <div className="max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1680px] mx-auto px-6 sm:px-12 lg:px-16 xl:px-20 relative z-10">
         {/* MAIN SECTION HEADING */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-6 md:mb-10"
+          className="text-center max-w-4xl mx-auto mb-8 md:mb-12"
         >
-          <h2 className="text-2xl sm:text-[30px] font-semibold text-[#0F172A] tracking-tight leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-[#0F172A] tracking-tight leading-tight font-cera">
             How We Work at Godigitify.
           </h2>
         </motion.div>

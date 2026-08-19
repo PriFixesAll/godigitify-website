@@ -82,18 +82,18 @@ export function Navbar() {
   };
 
   return (
-    <header className="fixed top-3 sm:top-3.5 inset-x-0 z-50 flex items-center justify-between px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto pointer-events-none">
-      {/* 1. Top-Left Corner: Logo OUTSIDE the floating navbar pill */}
-      <div className="pointer-events-auto shrink-0 flex items-center">
+    <header className="fixed top-2 sm:top-3 inset-x-0 z-50 flex items-center justify-between px-6 sm:px-12 lg:px-16 xl:px-20 max-w-[1536px] 2xl:max-w-[1680px] mx-auto pointer-events-none">
+      {/* 1. Top-Left Corner: Logo aligned on exact same horizontal center line */}
+      <div className="pointer-events-auto shrink-0 flex items-center h-10 sm:h-12">
         <Logo showTagline={false} />
       </div>
 
-      {/* 2. Center: Compact Floating Glass Pill containing ONLY the navigation buttons */}
+      {/* 2. Center: Compact Floating Glass Pill containing ONLY the navigation buttons — ON EXACT SAME HORIZONTAL LINE */}
       <div
-        className={`pointer-events-auto hidden md:flex items-center justify-center transition-all duration-300 ease-out rounded-full ${
+        className={`absolute left-1/2 -translate-x-1/2 pointer-events-auto hidden md:flex items-center justify-center transition-all duration-300 ease-out rounded-full ${
           isScrolled
-            ? 'bg-white/65 backdrop-blur-xl border border-white/80 shadow-[0_8px_32px_rgba(15,23,42,0.08)] px-3 py-1'
-            : 'bg-white/45 backdrop-blur-md border border-white/70 shadow-sm px-3 py-1'
+            ? 'bg-white/70 backdrop-blur-xl border border-white/90 shadow-[0_8px_32px_rgba(15,23,42,0.1)] px-5 py-2 sm:px-7 sm:py-2.5'
+            : 'bg-white/50 backdrop-blur-md border border-white/80 shadow-sm px-5 py-2 sm:px-7 sm:py-2.5'
         }`}
         style={{
           WebkitBackdropFilter: isScrolled ? 'blur(16px) saturate(180%)' : 'blur(12px)',
@@ -102,7 +102,7 @@ export function Navbar() {
       >
         <nav
           aria-label="Main Navigation"
-          className="flex items-center gap-0.5 sm:gap-1 text-[13px] font-semibold"
+          className="flex items-center gap-1 sm:gap-2 text-sm sm:text-base font-semibold"
           onMouseLeave={handleMouseLeave}
         >
           {navigationConfig.mainNav.map((item) => {
@@ -117,7 +117,7 @@ export function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className="relative px-3 py-1 rounded-full text-[13px] font-semibold transition-colors duration-200 z-10 flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
+                  className="relative px-3.5 py-1 rounded-full text-sm sm:text-base font-semibold transition-colors duration-200 z-10 flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
                   style={{
                     color: isHovered ? '#7C3AED' : '#0F172A',
                   }}
@@ -125,7 +125,7 @@ export function Navbar() {
                   <span className="relative z-10">{item.label}</span>
                   {isServices && (
                     <ChevronDown
-                      className={`w-3.5 h-3.5 relative z-10 transition-transform duration-200 ${
+                      className={`w-4 h-4 relative z-10 transition-transform duration-200 ${
                         isHovered ? 'rotate-180 text-[#7C3AED]' : 'text-slate-600'
                       }`}
                     />
@@ -135,7 +135,7 @@ export function Navbar() {
                   {isHovered && (
                     <motion.div
                       layoutId="navbar-hover-line"
-                      className="absolute bottom-0 left-2 right-2 h-[2px] bg-[#7C3AED] rounded-full z-10"
+                      className="absolute bottom-0 left-2 right-2 h-[3px] bg-[#7C3AED] rounded-full z-10"
                       transition={{
                         type: 'spring',
                         stiffness: 400,

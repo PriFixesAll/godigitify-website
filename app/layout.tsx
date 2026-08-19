@@ -56,6 +56,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/graphik-web" />
         <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/cera-pro" />
       </head>
       <body className="min-h-full flex flex-col bg-[#F8F6F2] text-[#1A1A1A] font-sans selection:bg-purple-500/20" suppressHydrationWarning>
