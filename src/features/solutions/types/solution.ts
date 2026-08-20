@@ -31,3 +31,21 @@ export interface OutcomeItemData {
   title: string;
   description: string;
 }
+
+export interface ProductStatistic {
+  value: string;
+  label: string;
+}
+
+export interface ProductItemData {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  image: string;
+  imageAlt?: string;
+  stats: ProductStatistic[];
+  demoHref?: string;
+  learnMoreHref?: string;
+  detailsHref?: string;
+}

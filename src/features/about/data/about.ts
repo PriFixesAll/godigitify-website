@@ -55,21 +55,25 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Niraj Gupta',
     role: 'Chief Marketing & Growth Officer',
-    bio: 'Visionary marketing leader spearheading brand growth, strategic partnerships, and digital transformation to drive business expansion and global presence.',
+    bio: 'Visionary marketing leader spearheading brand growth, strategic partnerships, and digital transformation to drive business expansion.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
   },
   {
     name: 'Abhishek Mishra',
     role: 'Head Of Operations',
-    bio: 'Operational strategist ensuring seamless project execution, organizational efficiency, and alignment between innovation and execution excellence.',
+    bio: 'Operational strategist ensuring seamless project execution, organizational efficiency, and execution excellence.',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop',
   },
   {
     name: 'Aryan Kamboj',
     role: 'Head of Research & Innovation',
-    bio: 'Innovative technologist leading research initiatives in emerging technologies to create transformative solutions with measurable real-world impact.',
+    bio: 'Innovative technologist leading research initiatives in emerging technologies to create transformative solutions.',
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop',
   },
   {
     name: 'Aman Deep',
     role: 'Creative Head – Design & Brand Experience',
-    bio: 'Creative powerhouse driving visual storytelling, user-centered design, and brand innovation that deliver emotionally engaging digital experiences.',
+    bio: 'Creative powerhouse driving visual storytelling, user-centered design, and brand innovation.',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop',
   },
 ];

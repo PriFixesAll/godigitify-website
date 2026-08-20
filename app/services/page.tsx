@@ -17,6 +17,7 @@ import { CallToActionSection } from '@/features/cta/components/CallToActionSecti
 import { OurServicesReferenceSection } from '@/features/services/components/OurServicesReferenceSection';
 import { ServicesMasteryEcosystem } from '@/features/services/components/ServicesMasteryEcosystem';
 import { ServicesHeroSection } from '@/features/services/components/ServicesHeroSection';
+import { DigitalCapabilitiesSection } from '@/features/services/components/DigitalCapabilitiesSection';
 import { WhoThisServiceIsForSection } from '@/features/services/components/WhoThisServiceIsForSection';
 import { OurProcessInterlockingSection } from '@/features/process/components/OurProcessInterlockingSection';
 
@@ -113,8 +114,11 @@ export default function ServicesPage() {
       <Navbar />
 
       <main className="pb-16">
-        {/* NEW TOP HERO SECTION CLONED FROM ATTACHED REFERENCE IMAGE */}
+        {/* NEW TOP HERO SECTION */}
         <ServicesHeroSection />
+
+        {/* 4 EQUAL CARDS CAPABILITIES ROW */}
+        <DigitalCapabilitiesSection />
 
         {/* ONE CONNECTED MASTERY ECOSYSTEM (ANIMATED VENN SLIDE) */}
         <ServicesMasteryEcosystem />

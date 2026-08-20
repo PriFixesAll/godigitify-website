@@ -5,6 +5,8 @@ import { Footer } from '@/components/layout/Footer';
 import { SolutionsHero } from '@/features/solutions/components/SolutionsHero';
 import { ProblemStatement } from '@/features/solutions/components/ProblemStatement';
 import { SolutionGrid } from '@/features/solutions/components/SolutionGrid';
+import { StackedSolutionsSection } from '@/features/solutions/components/StackedSolutionsSection';
+import { OurProductsSection } from '@/features/solutions/components/OurProductsSection';
 import { TransformationJourney } from '@/features/solutions/components/TransformationJourney';
 import { SolutionBuilder } from '@/features/solutions/components/SolutionBuilder';
 import { SolutionEcosystem } from '@/features/solutions/components/SolutionEcosystem';
@@ -32,7 +34,13 @@ export default function SolutionsPage() {
         {/* SECTION 03 — SOLUTION ECOSYSTEM (6 CARDS GRID) */}
         <SolutionGrid />
 
-        {/* SECTION 04 — SOLUTIONS BY BUSINESS STAGE */}
+        {/* SECTION 04 — SCROLL-DRIVEN STACKED SOLUTIONS TAKE-OVER */}
+        <StackedSolutionsSection />
+
+        {/* SECTION 05 — OUR PRODUCTS (5 VERTICALLY STACKED CARDS) */}
+        <OurProductsSection />
+
+        {/* SECTION 05 — SOLUTIONS BY BUSINESS STAGE */}
         <TransformationJourney />
 
         {/* SECTION 05 — SOLUTION BUILDER */}

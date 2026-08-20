@@ -15,6 +15,8 @@ import {
   Zap,
   Code2,
   ArrowRight,
+  Package,
+  Sliders,
 } from 'lucide-react';
 import { Logo } from '@/components/ui/Logo';
 import { navigationConfig } from '@/config/navigation';
@@ -52,13 +54,30 @@ const richServicesSubmenu = [
   },
 ];
 
+const richSolutionsSubmenu = [
+  {
+    title: 'Our Products',
+    description: 'Scalable digital products, SaaS & platforms',
+    href: '/solutions#solution-grid',
+    icon: Package,
+  },
+  {
+    title: 'Custom Solutions',
+    description: 'Tailored AI, workflow automation & system engineering',
+    href: '/solutions#interactive-builder',
+    icon: Sliders,
+  },
+];
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [isServicesOpenMobile, setIsServicesOpenMobile] = useState(false);
+  const [isSolutionsOpenMobile, setIsSolutionsOpenMobile] = useState(false);
   const pathname = usePathname();
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isDarkPage = pathname === '/contact';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,19 +104,21 @@ export function Navbar() {
     <header className="fixed top-2 sm:top-3 inset-x-0 z-50 flex items-center justify-between px-6 sm:px-12 lg:px-16 xl:px-20 max-w-[1536px] 2xl:max-w-[1680px] mx-auto pointer-events-none">
       {/* 1. Top-Left Corner: Logo aligned on exact same horizontal center line */}
       <div className="pointer-events-auto shrink-0 flex items-center h-10 sm:h-12">
-        <Logo showTagline={false} />
+        <Logo isDarkPage={isDarkPage} showTagline={false} />
       </div>
 
       {/* 2. Center: Compact Floating Glass Pill containing ONLY the navigation buttons — ON EXACT SAME HORIZONTAL LINE */}
       <div
         className={`absolute left-1/2 -translate-x-1/2 pointer-events-auto hidden md:flex items-center justify-center transition-all duration-300 ease-out rounded-full ${
-          isScrolled
+          isDarkPage
+            ? 'bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg px-5 py-2 sm:px-7 sm:py-2.5'
+            : isScrolled
             ? 'bg-white/70 backdrop-blur-xl border border-white/90 shadow-[0_8px_32px_rgba(15,23,42,0.1)] px-5 py-2 sm:px-7 sm:py-2.5'
             : 'bg-white/50 backdrop-blur-md border border-white/80 shadow-sm px-5 py-2 sm:px-7 sm:py-2.5'
         }`}
         style={{
-          WebkitBackdropFilter: isScrolled ? 'blur(16px) saturate(180%)' : 'blur(12px)',
-          backdropFilter: isScrolled ? 'blur(16px) saturate(180%)' : 'blur(12px)',
+          WebkitBackdropFilter: isDarkPage || isScrolled ? 'blur(16px) saturate(180%)' : 'blur(12px)',
+          backdropFilter: isDarkPage || isScrolled ? 'blur(16px) saturate(180%)' : 'blur(12px)',
         }}
       >
         <nav
@@ -108,6 +129,9 @@ export function Navbar() {
           {navigationConfig.mainNav.map((item) => {
             const isHovered = hoveredNav === item.label;
             const isServices = item.label === 'Services';
+            const isSolutions = item.label === 'Solutions';
+            const hasDropdown = isServices || isSolutions;
+            const activeSubmenu = isServices ? richServicesSubmenu : isSolutions ? richSolutionsSubmenu : null;
 
             return (
               <div
@@ -119,14 +143,18 @@ export function Navbar() {
                   href={item.href}
                   className="relative px-3.5 py-1 rounded-full text-sm sm:text-base font-semibold transition-colors duration-200 z-10 flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
                   style={{
-                    color: isHovered ? '#7C3AED' : '#0F172A',
+                    color: isHovered
+                      ? isDarkPage ? '#C4B5FD' : '#7C3AED'
+                      : isDarkPage ? '#FFFFFF' : '#0F172A',
                   }}
                 >
                   <span className="relative z-10">{item.label}</span>
-                  {isServices && (
+                  {hasDropdown && (
                     <ChevronDown
                       className={`w-4 h-4 relative z-10 transition-transform duration-200 ${
-                        isHovered ? 'rotate-180 text-[#7C3AED]' : 'text-slate-600'
+                        isHovered
+                          ? isDarkPage ? 'rotate-180 text-[#C4B5FD]' : 'rotate-180 text-[#7C3AED]'
+                          : isDarkPage ? 'text-slate-300' : 'text-slate-600'
                       }`}
                     />
                   )}
@@ -145,8 +173,8 @@ export function Navbar() {
                   )}
                 </Link>
 
-                {/* SERVICES RICH DROPDOWN PANEL MATCHING REFERENCE IMAGE */}
-                {isServices && (
+                {/* RICH DROPDOWN PANEL FOR SERVICES & SOLUTIONS */}
+                {hasDropdown && activeSubmenu && (
                   <AnimatePresence>
                     {isHovered && (
                       <motion.div
@@ -155,7 +183,7 @@ export function Navbar() {
                         exit={{ opacity: 0, y: -4, scale: 0.98 }}
                         transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 z-50 pointer-events-auto"
-                        onMouseEnter={() => handleMouseEnter('Services')}
+                        onMouseEnter={() => handleMouseEnter(item.label)}
                         onMouseLeave={handleMouseLeave}
                       >
                         {/* INVISIBLE HOVER BRIDGE PREVENTS GAP DROPOUT */}
@@ -163,7 +191,7 @@ export function Navbar() {
 
                         {/* FLOATING WHITE CARD WITH GODIGITIFY PURPLE THEME & COMPACT SIZING */}
                         <div className="bg-white/95 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 shadow-[0_20px_50px_rgba(15,23,42,0.14)] border border-slate-100/90 w-[280px] sm:w-[315px] flex flex-col gap-0.5 text-left">
-                          {richServicesSubmenu.map((subItem, index) => {
+                          {activeSubmenu.map((subItem, index) => {
                             const IconComp = subItem.icon;
                             return (
                               <motion.div
@@ -184,10 +212,10 @@ export function Navbar() {
                                     <IconComp className="w-4 h-4" />
                                   </div>
                                   <div>
-                                    <h4 className="text-[13px] font-bold text-[#0F172A] tracking-tight group-hover:text-[#7C3AED] transition-colors leading-snug">
+                                    <h4 className="text-[13px] font-semibold text-[#0F172A] tracking-tight group-hover:text-[#7C3AED] transition-colors leading-snug font-cera">
                                       {subItem.title}
                                     </h4>
-                                    <p className="text-[11px] text-slate-500 font-normal leading-tight mt-0.5">
+                                    <p className="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
                                       {subItem.description}
                                     </p>
                                   </div>
@@ -199,14 +227,14 @@ export function Navbar() {
                           {/* BOTTOM FOOTER BAR */}
                           <div className="border-t border-slate-100 pt-2 mt-0.5 px-2 flex items-center justify-between">
                             <Link
-                              href="/services"
+                              href={item.href}
                               className="text-[11.5px] font-semibold text-slate-700 hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 group"
                             >
-                              <span>View all services</span>
+                              <span>View all {item.label.toLowerCase()}</span>
                             </Link>
                             <Link
-                              href="/services"
-                              aria-label="View all services"
+                              href={item.href}
+                              aria-label={`View all ${item.label}`}
                               className="text-slate-400 group-hover:text-[#7C3AED] transition-colors"
                             >
                               <ArrowRight className="w-3.5 h-3.5" />
@@ -268,33 +296,42 @@ export function Navbar() {
             <nav aria-label="Mobile Navigation" className="flex flex-col gap-1.5">
               {navigationConfig.mainNav.map((item) => {
                 const isServices = item.label === 'Services';
+                const isSolutions = item.label === 'Solutions';
+                const hasDropdown = isServices || isSolutions;
+                const isSubmenuOpen = isServices ? isServicesOpenMobile : isSolutions ? isSolutionsOpenMobile : false;
+                const toggleSubmenu = () => {
+                  if (isServices) setIsServicesOpenMobile(!isServicesOpenMobile);
+                  if (isSolutions) setIsSolutionsOpenMobile(!isSolutionsOpenMobile);
+                };
+                const submenuItems = isServices ? richServicesSubmenu : isSolutions ? richSolutionsSubmenu : [];
+
                 return (
                   <div key={item.href} className="flex flex-col">
                     <div className="flex items-center justify-between">
                       <Link
                         href={item.href}
-                        onClick={() => !isServices && setIsOpen(false)}
+                        onClick={() => !hasDropdown && setIsOpen(false)}
                         className="text-sm font-semibold text-[#1A1A1A] hover:text-[#7C3AED] transition-colors py-1.5 px-3 rounded-full"
                       >
                         {item.label}
                       </Link>
-                      {isServices && (
+                      {hasDropdown && (
                         <button
-                          onClick={() => setIsServicesOpenMobile(!isServicesOpenMobile)}
-                          className="p-1.5 text-slate-600"
+                          onClick={toggleSubmenu}
+                          className="p-1.5 text-slate-600 cursor-pointer"
                         >
                           <ChevronDown
                             className={`w-4 h-4 transition-transform ${
-                              isServicesOpenMobile ? 'rotate-180' : ''
+                              isSubmenuOpen ? 'rotate-180 text-[#7C3AED]' : ''
                             }`}
                           />
                         </button>
                       )}
                     </div>
 
-                    {isServices && isServicesOpenMobile && (
+                    {hasDropdown && isSubmenuOpen && (
                       <div className="flex flex-col gap-1 items-start pl-4 pt-1 pb-2">
-                        {richServicesSubmenu.map((subItem) => (
+                        {submenuItems.map((subItem) => (
                           <Link
                             key={subItem.title}
                             href={subItem.href}
